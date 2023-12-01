@@ -9,7 +9,8 @@ export default function BmiCalculatorPage() {
 
   const[details, setDetails] = useState(initialValue);
   const[errors, setErrors] = useState({});
-  const[isSubmit, setIsSubmit] = useState(false)
+  const[isSubmit, setIsSubmit] = useState(false);
+  const[bmi, setBmi] = useState(0);
   
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -19,12 +20,12 @@ export default function BmiCalculatorPage() {
   };
   const handelSubmit = (e) => {
     e.preventDefault();
-
     setErrors(validation(details));
     setIsSubmit(true)
   }
   useEffect(() => {
     if(Object.keys(errors).length === 0 && isSubmit){
+      calculateBMI();
     }
   },[errors])
 
@@ -40,10 +41,16 @@ const validation = (values) => {
   }else{error.weight = "Not valid weight!";}
 
   if(values.height >= 0.1 && values.height <= 3){
-  }else{error.weight = "Not valid height!";}
+  }else{error.height = "Not valid height!";}
   
   return error;
 }
+
+  const calculateBMI = () => {
+    const bmiCaculated = details.weight/Math.pow(details.height, 2);
+    const roundedBmi = Math.round(bmiCaculated * 10)/ 10;
+    setBmi(roundedBmi);
+  }
 
   return (
     <div>
@@ -63,7 +70,7 @@ const validation = (values) => {
           <button type='submit' onClick={validation}>Submit</button>
         </div>
         <div>
-          <h3 style={{padding:"1px"}}>your BMI is:</h3>
+          <h3 style={{padding:"1px"}}>your BMI is: {bmi}</h3>
         </div>
       </form>
     </div>
