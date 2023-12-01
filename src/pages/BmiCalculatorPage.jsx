@@ -19,14 +19,12 @@ export default function BmiCalculatorPage() {
   };
   const handelSubmit = (e) => {
     e.preventDefault();
-    console.log(details);
+
     setErrors(validation(details));
     setIsSubmit(true)
   }
   useEffect(() => {
-    console.log(errors)
     if(Object.keys(errors).length === 0 && isSubmit){
-      console.log(details)
     }
   },[errors])
 
@@ -63,6 +61,9 @@ const validation = (values) => {
         </div>
         <div>
           <button type='submit' onClick={validation}>Submit</button>
+        </div>
+        <div>
+          <h3 style={{padding:"1px"}}>your BMI is:</h3>
         </div>
       </form>
     </div>
