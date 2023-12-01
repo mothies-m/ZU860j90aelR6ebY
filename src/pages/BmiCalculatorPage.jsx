@@ -24,8 +24,9 @@ export default function BmiCalculatorPage() {
     setIsSubmit(true)
   }
   useEffect(() => {
+    console.log(errors);
     if(Object.keys(errors).length === 0 && isSubmit){
-      calculateBMI();
+      calculateBMI()
     }
   },[errors])
 
