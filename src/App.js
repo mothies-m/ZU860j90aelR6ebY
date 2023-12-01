@@ -8,7 +8,7 @@ export default function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/ZU860j90aelR6ebY' element={<Home/>}/>
         <Route path='/bmicalcuatorpage' element={<BmiCalculatorPage/>}/>
       </Routes> 
     </div>
