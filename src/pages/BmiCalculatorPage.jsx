@@ -10,7 +10,7 @@ export default function BmiCalculatorPage() {
   const[details, setDetails] = useState(initialValue);
   const[errors, setErrors] = useState({});
   const[isSubmit, setIsSubmit] = useState(false);
-  const[bmi, setBmi] = useState(0);
+  const[bmi, setBmi] = useState("");
   
   const handleChange = (e) => {
     const {name, value} = e.target;
